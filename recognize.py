@@ -1,17 +1,11 @@
-import os
-import sys
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import *
 from PIL import ImageTk, Image
 import pickle
-
-from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import load_model
 from sklearn.metrics import accuracy_score
-
 import numpy as np
-import tensorflow.keras as tfk
 from traffic import load_data
 
 with open('test.pkl', 'rb') as f:
