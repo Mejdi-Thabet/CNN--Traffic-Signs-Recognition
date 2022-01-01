@@ -79,20 +79,21 @@ def main():
 
 
 def load_data(data_dir):
+
+	print(data_dir)
 	data = []
 	labels = []
-	for i in range(NUM_CATEGORIES):
-		path = os.path.join(data_dir, "gtsrb", str(i))
-		images = os.listdir(path)
-		for j in images:
-			try:
-				image = cv2.imread(os.path.join(path, j))
-				image_from_array = Image.fromarray(image, 'RGB')
-				resized_image = image_from_array.resize((IMG_HEIGHT, IMG_WIDTH))
-				data.append(np.array(resized_image))
-				labels.append(i)
-			except AttributeError:
-				print("Error loading the image!")
+	path = os.path.join(data_dir, "gtsrb")
+	images = os.listdir(path)
+	for j in images:
+		try:
+			image = cv2.imread(os.path.join(path, j))
+			image_from_array = Image.fromarray(image, 'RGB')
+			resized_image = image_from_array.resize((IMG_HEIGHT, IMG_WIDTH))
+			data.append(np.array(resized_image))
+			labels.append(j)
+		except AttributeError:
+			print("Error loading the image!")
 
 	images_data = (data, labels)
 	return images_data
